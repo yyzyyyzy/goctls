@@ -13,7 +13,6 @@ import (
 
 	"github.com/gookit/color"
 	"github.com/spf13/cobra"
-	"github.com/zeromicro/go-zero/core/logx"
 	apiformat "github.com/yyzyyyzy/goctls/api/format"
 	"github.com/yyzyyyzy/goctls/api/parser"
 	apiutil "github.com/yyzyyyzy/goctls/api/util"
@@ -21,6 +20,7 @@ import (
 	"github.com/yyzyyyzy/goctls/pkg/golang"
 	"github.com/yyzyyyzy/goctls/util"
 	"github.com/yyzyyyzy/goctls/util/pathx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 const tmpFile = "%s-%d"
@@ -104,6 +104,7 @@ func DoGenProject(apiFile, dir, style string, withTest bool) error {
 	logx.Must(genHandlers(dir, rootPkg, cfg, api))
 	logx.Must(genLogic(dir, rootPkg, cfg, api))
 	logx.Must(genMiddleware(dir, cfg, api))
+	logx.Must(genI18n(dir))
 	if withTest {
 		logx.Must(genHandlersTest(dir, rootPkg, cfg, api))
 		logx.Must(genLogicTest(dir, rootPkg, cfg, api))
